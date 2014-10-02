@@ -108,6 +108,18 @@ endfunction
 
 
 
+function! scratch#toggle()  "{{{2
+  let scratch_winnr = bufwinnr(s:bufnr)
+  if scratch_winnr == -1  " The scratch buffer is not visible.
+    call scratch#open()
+  else
+    call scratch#close()
+  endif
+endfunction
+
+
+
+
 function! scratch#evaluate_linewise(line1, line2, adjust_cursorp)  "{{{2
   let bufnr = bufnr('')
   call scratch#evaluate([bufnr, a:line1, 1, 0],
